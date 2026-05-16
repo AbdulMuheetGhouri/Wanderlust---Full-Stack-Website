@@ -4,7 +4,7 @@ const wrapasync = require("../utils/wrap_async.js");
 const ExpressError = require("../utils/ExpressErrors.js");
 const { reviewSchema } = require("../schema.js");
 const { isLoggedIn, isReviewOwner } = require("../middlewares.js");
-const reviewController = require("../Controllers/reviews.js");
+const reviewController = require("../controllers/reviews.js");
 
 // validation with Joi,
 const vaildateReviews = (req, res, next) => {
