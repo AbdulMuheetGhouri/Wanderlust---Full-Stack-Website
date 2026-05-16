@@ -9,13 +9,13 @@ const usersController = require("../Controllers/users.js");
 
 router.route("/signup")
 .get( (req, res, next) => {
-  res.render("Users/SignUp.ejs")})
+  res.render("Users/SignUp")})
 .post(wrap_async(usersController.create));
 
 
 router.route("/login")
 .get( (req, res, next) => {
-  res.render("Users/Login.ejs");
+  res.render("Users/Login");
 })
 .post( savedurl,
   passport.authenticate("local", {

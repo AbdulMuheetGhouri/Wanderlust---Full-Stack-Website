@@ -37,14 +37,14 @@ module.exports.show = async (req, res) => {
         req.flash("error", "Listing you requested for, does not exit");
         return res.redirect("/listings");
     }
-    res.render("listings/read.ejs", { list });
+    res.render("listings/read", { list });
 
 };
 module.exports.edit = async (req, res) => {
     let { id } = req.params;
     let list = await Listing.findById(id);
 
-    res.render("listings/update.ejs", { list });
+    res.render("listings/update", { list });
 };
 
 module.exports.update = async (req, res) => {

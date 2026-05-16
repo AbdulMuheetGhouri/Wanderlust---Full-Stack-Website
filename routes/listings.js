@@ -24,7 +24,7 @@ const validateListing = (req, res, next) => {
 // New route
 router.get("/new", isLoggedIn, (req, res) => {
     console.log(req.user);
-    res.render("listings/create.ejs");
+    res.render("listings/create");
 });
 
 // Listing routes
