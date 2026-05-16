@@ -14,7 +14,7 @@ const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const User = require("./Models/user.js");
+const User = require("./models/user.js");
 const listings = require("./routes/listings.js");
 const reviews = require("./routes/reviews.js");
 const user = require('./routes/users.js');
@@ -33,6 +33,8 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+
 
 
 const MONGO_URL = process.env.MONGO_ATLAS;

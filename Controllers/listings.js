@@ -1,4 +1,4 @@
-const Listing = require("../Models/listings");
+const Listing = require("../models/listings");
 module.exports.create = async (req, res, next) => {
 
     let url = req.file.path;

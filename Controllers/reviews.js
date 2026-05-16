@@ -1,5 +1,5 @@
-const Review = require("../Models/reviews");
-const Listing = require("../Models/listings");
+const Review = require("../models/reviews");
+const Listing = require("../models/listings");
 module.exports.index = async (req, res, next) => {
     const { id } = req.params;
     console.log("RECEIVED ID:", id);

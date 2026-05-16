@@ -1,5 +1,5 @@
-const Listing = require("./Models/listings");
-const Review = require("./Models/reviews");
+const Listing = require("./models/listings");
+const Review = require("./models/reviews");
 module.exports.isLoggedIn = (req,res,next)=>{
     if (!req.isAuthenticated()) {
         req.session.redirectUrl = req.originalUrl;
