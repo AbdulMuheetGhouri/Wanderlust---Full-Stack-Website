@@ -127,7 +127,10 @@ app.use((err, req, res, next) => {
     res.status(status).render("error.ejs", { status, message });
 });
 
-// Listening to Port:
-app.listen("8080", () => {
-    console.log("listening to port 8080");
+// listening to port
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+    console.log(`listening to port ${PORT}`);
 });
+
+module.exports = app;
