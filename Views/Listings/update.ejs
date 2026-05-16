@@ -1,0 +1,189 @@
+<%- layout("layouts/boilerplate") %>
+
+<body>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Edit Listing</h1>
+
+    <form enctype="multipart/form-data" novalidate method="POST"
+      action="/listings/<%= list._id %>?_method=PUT"
+      class="card p-4 mx-auto shadow-lg needs-validation" style="max-width: 600px;">
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input id="title" type="text" name="listing[title]" value="<%= list.title %>" class="form-control"
+          placeholder="Enter the title..." required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="listing[description]" class="form-control" rows="3"
+          placeholder="Enter the description..." required><%= list.description %></textarea>
+      </div>
+
+      <div class="mb-3 pre_div">
+        <p><i>Your Original Image Preview</i></p>
+        <img class="preview card-img-top" src="<%= list.image.url %>" alt="<%= list.title %>">
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload New Image</label>
+        <input id="image" type="file" name="listing[image]" class="form-control" >
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-5">
+          <label for="price" class="form-label">Price (Rs)</label>
+          <input id="price" type="number" name="listing[price]" value="<%= list.price %>" class="form-control"
+            placeholder="Enter the price..." required>
+        </div>
+
+        <div class="mb-3 col-md-7">
+          <label for="country" class="form-label">Country</label>
+          <input id="country" type="text" name="listing[country]" value="<%= list.country %>" class="form-control"
+            placeholder="Enter the country..." required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input id="location" type="text" name="listing[location]" value="<%= list.location %>" class="form-control"
+          placeholder="Enter the location..." required>
+      </div>
+
+      <div class="text-center mt-4">
+        <button type="submit" class="btn btn-primary px-4 me-2">Update Listing</button>
+        <a href="/listings/<%= list._id %>" class="btn btn-outline-light px-4">Cancel</a>
+      </div>
+    </form>
+  </div>
+
+  <style>
+    /* ======= Base ======= */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #301B22, #4B2C35, #DBC4B4);
+      color: #DBC4B4;
+      min-height: 100vh;
+      margin: 0;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      font-weight: 700;
+      color: #DBC4B4;
+      letter-spacing: 0.5px;
+    }
+
+    /* ======= Card ======= */
+    .card {
+      background: rgba(48, 27, 34, 0.6);
+      border: 1px solid rgba(219, 196, 180, 0.3);
+      border-radius: 16px;
+      color: #DBC4B4;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 25px rgba(48, 27, 34, 0.6);
+      transform: translateY(-3px);
+    }
+
+    /* ======= Labels ======= */
+    .form-label {
+      color: #DBC4B4;
+      font-weight: 500;
+    }
+
+    /* ======= Inputs ======= */
+    .form-control {
+      background-color: rgba(219, 196, 180, 0.1);
+      border: 1px solid rgba(219, 196, 180, 0.3);
+      color: #fff;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background-color: rgba(219, 196, 180, 0.15);
+      border-color: #DBC4B4;
+      box-shadow: 0 0 8px #DBC4B4;
+      color: #fff;
+    }
+
+    /* ======= Buttons ======= */
+    .btn-primary {
+      background-color: #DBC4B4;
+      color: #301B22;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #301B22;
+      color: #DBC4B4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(219, 196, 180, 0.4);
+    }
+
+    .btn-outline-light {
+      border: 1px solid #DBC4B4;
+      color: #DBC4B4;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+
+    .btn-outline-light:hover {
+      background-color: #DBC4B4;
+      color: #301B22;
+    }
+
+    /* ======= Image Preview ======= */
+    .pre_div {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .pre_div i {
+      color: rgba(219, 196, 180, 0.9);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .preview {
+      height: 150px !important;
+      border-radius: 10%;
+      object-fit: cover;
+      border: 1px solid rgba(219, 196, 180, 0.4);
+    }
+
+    /* ======= Responsive ======= */
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      .btn {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .preview {
+        width: 100%;
+        height: auto;
+      }
+    }
+  </style>
+</body>

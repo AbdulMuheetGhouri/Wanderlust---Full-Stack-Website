@@ -1,0 +1,61 @@
+<footer class="footer mt-auto py-4 text-center">
+  <div class="container">
+    <p class="mb-1">
+      🌍 <strong>WanderLust</strong> — Discover. Explore. Experience.
+    </p>
+    <p class="small mb-0">
+      &copy; <%= new Date().getFullYear() %> <strong>Abdul Muheet Ghouri</strong> | All Rights Reserved
+    </p>
+  </div>
+</footer>
+
+<style>
+  /* ======= Footer Styling ======= */
+  .footer {
+    background-color: #301B22;
+    color: #DBC4B4;
+    font-family: 'Poppins', sans-serif;
+    border-top: 2px solid #DBC4B4;
+    width: 100%;
+    margin-top: auto;
+    letter-spacing: 0.3px;
+  }
+
+  .footer p {
+    margin: 0;
+  }
+
+  .footer strong {
+    color: #DBC4B4;
+  }
+
+  /* subtle glowing hover color for links */
+  .footer a {
+    color: #DBC4B4;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+  }
+
+  .footer a:hover {
+    color: #fff;
+    text-shadow: 0 0 5px #DBC4B4;
+  }
+
+  /* Glow animation on brand name */
+  .footer strong:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #DBC4B4;
+  }
+
+  /* Responsive tweaks */
+  @media (max-width: 576px) {
+    .footer {
+      font-size: 0.9rem;
+      padding: 1rem 0.5rem;
+    }
+    .footer p {
+      line-height: 1.4;
+    }
+  }
+</style>

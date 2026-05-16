@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* ===== Global Base ===== */
+body {
+  /* font-family: 'Poppins', sans-serif; */
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #e4e4e4;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.container{
+  flex: 1;
+}
+/* navbar */
+  .navbar {
+    background: rgba(15, 32, 39, 0.9);
+    padding: 1rem 2rem;
+  }
+
+  .navbar-brand {
+    color: #e4e4e4 !important;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .navbar-brand:hover {
+    color: #00bcd4;
+  }
+
+  .nav-link {
+    color: #e4e4e4 !important;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link:hover {
+    color: #00bcd4 !important;
+  }
+
+  /* For mobile toggle icon to be visible on dark bg */
+  .navbar-toggler {
+    border-color: #e4e4e4;
+  }
+
+  .navbar-toggler-icon {
+    filter: invert(100%);
+  }

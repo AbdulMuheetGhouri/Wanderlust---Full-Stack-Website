@@ -1,0 +1,139 @@
+<%- layout("layouts/boilerplate") %>
+
+<body>
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Create a New Listing</h1>
+
+    <form enctype="multipart/form-data" novalidate method="POST" action="/listings"
+      class="card p-4 mx-auto shadow-lg needs-validation" style="max-width: 600px;">
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input id="title" name="listing[title]" type="text" class="form-control"
+          placeholder="Enter the title here..." required>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="listing[description]" class="form-control" rows="3"
+          placeholder="Enter the description..." required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Image</label>
+        <input id="image" name="listing[image]" type="file" class="form-control" required>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-5">
+          <label for="price" class="form-label">Price (Rs)</label>
+          <input id="price" name="listing[price]" type="text" class="form-control"
+            placeholder="Enter the price here..." required>
+        </div>
+
+        <div class="mb-3 col-md-7">
+          <label for="country" class="form-label">Country</label>
+          <input id="country" name="listing[country]" type="text" class="form-control"
+            placeholder="Enter the country" required>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input id="location" name="listing[location]" type="text" class="form-control"
+          placeholder="Enter the location" required>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary px-4" type="submit">Add Listing</button>
+      </div>
+    </form>
+  </div>
+
+  <style>
+    /* ======= Base Styles ======= */
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #301B22, #4B2C35, #DBC4B4);
+      color: #DBC4B4;
+      min-height: 100vh;
+      margin: 0;
+      background-attachment: fixed;
+    }
+
+    h1 {
+      font-weight: 700;
+      color: #DBC4B4;
+      letter-spacing: 0.5px;
+    }
+
+    /* ======= Form Card ======= */
+    .card {
+      background: rgba(48, 27, 34, 0.6);
+      border: 1px solid rgba(219, 196, 180, 0.3);
+      border-radius: 16px;
+      color: #DBC4B4;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 25px rgba(48, 27, 34, 0.6);
+      transform: translateY(-3px);
+    }
+
+    /* ======= Labels ======= */
+    .form-label {
+      color: #DBC4B4;
+      font-weight: 500;
+    }
+
+    /* ======= Inputs ======= */
+    .form-control {
+      background-color: rgba(219, 196, 180, 0.1);
+      border: 1px solid rgba(219, 196, 180, 0.3);
+      color: #fff;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .form-control:focus {
+      background-color: rgba(219, 196, 180, 0.15);
+      border-color: #DBC4B4;
+      box-shadow: 0 0 8px #DBC4B4;
+      color: #fff;
+    }
+
+    /* ======= Submit Button ======= */
+    .btn-primary {
+      background-color: #DBC4B4;
+      color: #301B22;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #301B22;
+      color: #DBC4B4;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(219, 196, 180, 0.4);
+    }
+
+    /* ======= Responsive ======= */
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+    }
+  </style>
+</body>

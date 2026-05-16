@@ -1,0 +1,177 @@
+<nav class="navbar navbar-expand-md sticky-top shadow-sm py-2" style="background-color: #301B22;">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold fs-4 text-light" href="/listings">WanderLust</a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler text-light border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+      <!-- Left Links -->
+      <div class="navbar-nav me-auto">
+        <a class="nav-link text-light fw-semibold mx-2" href="/listings">Explore</a>
+      </div>
+
+      <!-- Search Form -->
+      <form class="d-flex align-items-center mx-md-3 my-2 my-md-0" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn search-btn" type="submit">Search</button>
+      </form>
+
+      <!-- Right Links -->
+      <div class="navbar-nav align-items-center">
+        <a class="nav-link text-light fw-semibold mx-2" href="/listings/new">Airbnb your Villa</a>
+
+        <% if(!curruser) { %>
+          <a class="nav-link text-light fw-semibold mx-2" href="/signup">Sign up</a>
+          <a class="nav-link text-light fw-semibold mx-2" href="/login">Log in</a>
+        <% } %>
+
+        <% if(curruser){ %>
+          <div class="btn-group">
+            <button type="button" class="btn btn-outline-light dropdown-toggle"
+              data-bs-toggle="dropdown"
+              style="--bs-btn-padding-y: .4rem; --bs-btn-padding-x: .75rem; --bs-btn-font-size: .85rem;"
+              aria-expanded="false">
+              Hi, <%= curruser.username %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end mt-2">
+              <li><a class="dropdown-item text-center text-danger fw-semibold" href="/logout">Log out</a></li>
+            </ul>
+          </div>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<style>
+  /* --- Navbar --- */
+  .navbar {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  /* --- Links --- */
+  .navbar-nav .nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-nav .nav-link:hover {
+    color: #DBC4B4 !important;
+    transform: scale(1.05);
+  }
+
+  .navbar-nav .nav-link::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: #DBC4B4;
+    width: 0;
+    transition: width 0.3s;
+    margin-top: 3px;
+  }
+
+  .navbar-nav .nav-link:hover::after {
+    width: 100%;
+  }
+
+  /* --- Search Form --- */
+  form input {
+    max-width: 200px !important;
+    height: 38px !important;
+    border-radius: 0.5rem;
+    border: 1px solid #DBC4B4;
+    padding: 0.4rem 0.7rem;
+    background-color: #fff;
+    color: #301B22;
+    transition: all 0.3s ease;
+  }
+
+  form input:focus {
+    outline: none;
+    border-color: #301B22;
+    box-shadow: 0 0 4px #DBC4B4;
+  }
+
+  .search-btn {
+    background-color: #DBC4B4;
+    color: #301B22;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.4rem 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .search-btn:hover {
+    background-color: #301B22;
+    color: #DBC4B4;
+    border: 1px solid #DBC4B4;
+  }
+
+  /* --- Dropdown --- */
+  .dropdown-menu {
+    border: none;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 768px) {
+    form {
+      justify-content: center;
+      margin: 1rem 0;
+    }
+
+    form input {
+      max-width: 100% !important;
+    }
+
+    .navbar-nav .nav-link {
+      text-align: center;
+      margin: 0.4rem 0;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.querySelector("form button");
+
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const query = document.querySelector("form input").value.toLowerCase().trim();
+    const cards = document.querySelectorAll(".listing-card");
+
+    let found = false;
+
+    cards.forEach(card => {
+      const title = card.querySelector(".card-title").innerText.toLowerCase();
+      const country = card.querySelector(".card-text")?.innerText.toLowerCase() || "";
+
+      if (title.includes(query) || country.includes(query)) {
+        card.parentElement.style.display = "block";
+        found = true;
+      } else {
+        card.parentElement.style.display = "none";
+      }
+    });
+
+    if (query === "") {
+      cards.forEach(card => card.parentElement.style.display = "block");
+    }
+
+    if (!found && query !== "") {
+      
+      alert(`No listing found for '${query}'`);
+    }
+  });
+</script>

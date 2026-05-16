@@ -1,0 +1,95 @@
+<% if (listsuccess && listsuccess.length) { %>
+  <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+    <%= listsuccess %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+<% } else if (listdlt && listdlt.length) { %>
+  <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+    <%= listdlt %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+<% } else if (listupdate && listupdate.length) { %>
+  <div class="alert alert-info alert-dismissible fade show custom-alert" role="alert">
+    <%= listupdate %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+<% } else if (reviewsuccess && reviewsuccess.length) { %>
+  <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+    <%= reviewsuccess %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+<% } else if (reviewdlt && reviewdlt.length) { %>
+  <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+    <%= reviewdlt %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+<% } else if (error && error.length > 0) { %>
+  <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+    <%= error %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+<% if (success && success.length > 0) { %>
+  <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+    <%= success %>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  </div>
+<% } %>
+
+
+<style>
+  .custom-alert {
+    width: 60%;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(48, 27, 34, 0.8);
+    border: 1px solid rgba(219, 196, 180, 0.4);
+    color: #DBC4B4;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    box-shadow: 0 6px 20px rgba(48, 27, 34, 0.5);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+  }
+
+  .custom-alert:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(48, 27, 34, 0.6);
+  }
+
+  .alert-success {
+    border-left: 6px solid #A2D5AB; /* soft green accent */
+  }
+
+  .alert-danger {
+    border-left: 6px solid #E57373; /* muted red */
+  }
+
+  .alert-info {
+    border-left: 6px solid #DBC4B4; /* neutral beige highlight */
+  }
+
+  .btn-close {
+    filter: invert(1);
+    opacity: 0.8;
+  }
+
+  .btn-close:hover {
+    opacity: 1;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .custom-alert {
+      width: 90%;
+      font-size: 0.95rem;
+      padding: 1rem;
+    }
+  }
+</style>
