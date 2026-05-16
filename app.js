@@ -32,9 +32,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 //  View engine setup
 app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
-
-app.set("views", path.join(__dirname, "templates"));
-
+app.set("views", path.join(__dirname, "Views"));
 
 
 const MONGO_URL = process.env.MONGO_ATLAS;
@@ -118,6 +116,10 @@ app.use("/listings/:id/reviews", reviews);
 app.use("/", user);
 
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 // All your valid routes above this...
 app.use((req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
@@ -126,7 +128,7 @@ app.use((req, res, next) => {
 // Centralized Error Handler
 app.use((err, req, res, next) => {
     const { status = 500, message = "Something went wrong!" } = err;
-    res.status(status).render("error.ejs", { status, message });
+    res.status(status).render("error", { status, message });
 });
 
 // listening to port
